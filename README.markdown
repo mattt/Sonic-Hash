@@ -60,3 +60,5 @@ See [http://pajhome.org.uk/crypt/md5](http://pajhome.org.uk/crypt/md5) for more 
 
 Javascript client-side WAV generation based on code by sk89q  
 See [http://sk89q.therisenrealm.com/](http://sk89q.therisenrealm.com/) for more info
+
+Thanks to Christian Crumlish (@mediajunkie) for suggesting the use of sound for password identification.
