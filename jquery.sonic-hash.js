@@ -2,14 +2,13 @@
  * Sonic-Hash : A melodic Sonification of password field input
  * http://github.com/mattt/Sonic-Hash/
  *
- * Copyright (c) 2009 Mattt Thompson
+ * Copyright (c) 2009-2012 Mattt Thompson (http://mattt.me)
  * Licensed under the MIT licenses.
  */
 
 (function($){
   $.fn.extend({
     sonicHash: function(options) {
-
       var defaults = {
           notes:    4,
           minimum:  6,
@@ -20,47 +19,40 @@
       var options = $.extend(defaults, options);
 
       var notes = {
-                   "C3"      : 130.81,  "C4"      : 261.63,  "C5"      : 523.25,
-                   "C#3/Db3" : 138.59,  "C#4/Db4" : 277.18,  "C#5/Db5" : 277.18,
-                   "D3"      : 146.83,  "D4"      : 293.66,  "D5"      : 293.66,
-                   "D#3/Eb3" : 155.56,  "D#4/Eb4" : 311.13,  "D#5/Eb5" : 311.13,
-                   "E3"      : 164.81,  "E4"      : 329.63,  "E5"      : 329.63,
-                   "F3"      : 174.61,  "F4"      : 349.23,  "F5"      : 349.23,
-                   "F#3/Gb3" : 185.00,  "F#4/Gb4" : 369.99,  "F#5/Gb5" : 369.99,
-                   "G3"      : 196.00,  "G4"      : 392.00,  "G5"      : 392.00,
-                   "G#3/Ab3" : 207.65,  "G#4/Ab4" : 415.30,  "G#5/Ab5" : 415.30,
-                   "A3"      : 220.00,  "A4"      : 440.00,  "A5"      : 440.00,
-                   "A#3/Bb3" : 233.08,  "A#4/Bb4" : 466.16,  "A#5/Bb5" : 466.16,
-                   "B3"      : 246.94,  "B4"      : 493.88,  "B5"      : 493.88
-              };
+           "C3"      : 130.81,  "C4"      : 261.63,  "C5"      : 523.25,
+           "C#3/Db3" : 138.59,  "C#4/Db4" : 277.18,  "C#5/Db5" : 277.18,
+           "D3"      : 146.83,  "D4"      : 293.66,  "D5"      : 293.66,
+           "D#3/Eb3" : 155.56,  "D#4/Eb4" : 311.13,  "D#5/Eb5" : 311.13,
+           "E3"      : 164.81,  "E4"      : 329.63,  "E5"      : 329.63,
+           "F3"      : 174.61,  "F4"      : 349.23,  "F5"      : 349.23,
+           "F#3/Gb3" : 185.00,  "F#4/Gb4" : 369.99,  "F#5/Gb5" : 369.99,
+           "G3"      : 196.00,  "G4"      : 392.00,  "G5"      : 392.00,
+           "G#3/Ab3" : 207.65,  "G#4/Ab4" : 415.30,  "G#5/Ab5" : 415.30,
+           "A3"      : 220.00,  "A4"      : 440.00,  "A5"      : 440.00,
+           "A#3/Bb3" : 233.08,  "A#4/Bb4" : 466.16,  "A#5/Bb5" : 466.16,
+           "B3"      : 246.94,  "B4"      : 493.88,  "B5"      : 493.88
+      };
 
       var scale      = [];
       var pentatonic = ["C3", "D3", "E3", "G3", "A3", "C4", "D4", "E4", "G4", "A4", "C5", "D5", "E5", "G5", "A5"];
-      var octatonic  = ["F3", "F#3/Gb3", "G3", "G#3/Ab3", "A3", "A#3/Bb3", "B3", "C4",
-                        "C#4/Db4", "D4", "D#4/Eb4", "E4", "F4", "F#4/Gb4", "G4"];
+      var octatonic  = ["F3", "F#3/Gb3", "G3", "G#3/Ab3", "A3", "A#3/Bb3", "B3", "C4", "C#4/Db4", "D4", "D#4/Eb4", "E4", "F4", "F#4/Gb4", "G4"];
 
-      if(options.scale === "octatonic") {
+      if (options.scale === "octatonic") {
         scale = $.map(octatonic, function(n, i){return (notes[n]);});
-      }
-      else {
+      } else {
         scale = $.map(pentatonic, function(n, i){return (notes[n]);});
       }
 
       return this.each(function() {
-        var obj   = $(this);
-        
-
         var trigger = function(e) {
-          var input = $(this);
+          var $el = $(this);
 
-          if(input.val() == "" ) {
+          if ($el.val() == "" ) {
             return;
-          }
-          else if(input.val().length < options.minimum) {
+          } else if ($el.val().length < options.minimum) {
             $("#sonic-hash").replaceWith('<audio id="sonic-hash" src="' + alert + '"></audio>');
             $("#sonic-hash")[0].play();
-          }
-          else {
+          } else {
             var md5    = hex_md5('' + $(this).val() + ':' + options.salt);
             var digits = md5.match(/([\dABCDEF])/ig);
             var chord = [];
@@ -74,18 +66,19 @@
           }
         };
 
-        obj.each(function(e) {
-          if($("#sonic-hash")[0] === undefined) {
-            $(this).after('<audio id="sonic-hash"></audio>');
+        $(this).each(function(e) {
+          $el = $(this)
+          if ($("#sonic-hash")[0] === undefined) {
+            $el.after('<audio id="sonic-hash"></audio>');
           }
-          $(this).bind('blur', trigger);
+          
+          $el.bind('blur', trigger);
         });
         
           // Javascript WAV generation based on code by sk89q (http://sk89q.therisenrealm.com/)
           var generate=function(B,D){var G={channels:1,sampleRate:1012,bitDepth:16,seconds:0.25,volume:32767};var D=$.extend(G,D);var A=D.channels;var C=D.sampleRate;var F=D.bitDepth;var I=D.seconds;var N=D.volume;var K;var T=[];var J=0;for(var P in B){K=B[P];for(var O=0;O<C*I;O++){for(var Q=0;Q<A;Q++){var H=N*Math.sin((2*Math.PI)*(O/C)*K);T.push(pack("v",H));J++;}}}T=T.join("");var S=["fmt ",pack("V",16),pack("v",1),pack("v",A),pack("V",C),pack("V",C*A*F/8),pack("v",A*F/8),pack("v",F)].join("");var R=["data",pack("V",J*A*F/8),T].join("");var M=["RIFF",pack("V",4+(8+S.length)+(8+R.length)),"WAVE"].join("");var L=[M,S,R].join("");var E="data:audio/wav;base64,"+escape(btoa(L));return E;};var btoa=function(D){var B="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var A="";var K,I,G;var J,H,F,E;var C=0;do{K=D.charCodeAt(C++);I=D.charCodeAt(C++);G=D.charCodeAt(C++);J=K>>2;H=((K&3)<<4)|(I>>4);F=((I&15)<<2)|(G>>6);E=G&63;if(isNaN(I)){F=E=64;}else{if(isNaN(G)){E=64;}}A=A+B.charAt(J)+B.charAt(H)+B.charAt(F)+B.charAt(E);}while(C<D.length);return A;};var pack=function(B){var D="";var C=1;for(var E=0;E<B.length;E++){var F=B.charAt(E);var A=arguments[C];C++;switch(F){case"a":D+=A[0]+"\0";break;case"A":D+=A[0]+" ";break;case"C":case"c":D+=String.fromCharCode(A);break;case"n":D+=String.fromCharCode((A>>8)&255,A&255);break;case"v":D+=String.fromCharCode(A&255,(A>>8)&255);break;case"N":D+=String.fromCharCode((A>>24)&255,(A>>16)&255,(A>>8)&255,A&255);break;case"V":D+=String.fromCharCode(A&255,(A>>8)&255,(A>>16)&255,(A>>24)&255);break;case"x":C--;D+="\0";break;default:throw new Error("Unknown pack format character '"+F+"'");}}return D;};
           
           var alert = generate([799, 790, 799], {seconds:0.1, volume: 7797});
-
 
           /*
            * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
