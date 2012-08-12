@@ -5,19 +5,19 @@
     <meta name="author" content="Mattt Thompson">
     <meta name="description" content="Sonic-Hash is a melodic Sonification of   password field input">
   	<title>Sonic-Hash</title>
-    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.  com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="jquery.sonic-hash.js" type="text/javascript" charset="utf-8"></  script>
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="jquery.sonic-hash.js" type="text/javascript" charset="utf-8"></script>
   	<script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
-            $("input:password").sonicHash({notes: 4});
-            $("#username").focus();
-          });
+        $("input:password").sonicHash({notes: 4});
+        $("#username").focus();
+      });
   	</script>
   	<style type="text/css" media="screen">
       body{background:#4C4B45;font-size:120%;font-family:"Helvetica",Helvetica,sans-serif;}
       hgroup{text-align:center;}
       h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
-      h2{color:#888;width:80%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;  font-size:80%;font-style:italic;font-weight:normal;}
+      h2{color:#888;width:80%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia; font-size:80%;font-style:italic;font-weight:normal;}
       p,label, span{text-shadow:1px 1px 1px #f2f2f2;}
       label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
       p{font-size:77%;color:#444;}
@@ -30,11 +30,10 @@
       fieldset{width:440px;margin:10px auto;border:none;}
       hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
       .container, .footer{width:480px;}
-      .container{padding:30px 30px;margin:30px auto 30px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing: content-box;-webkit-box-shadow:0px 2px 5px #333;-khtml-box-sizing:content-box;box-sizing:content-box;
-      }
+      .container{padding:30px 30px;margin:30px auto 30px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing: content-box;-webkit-box-shadow:0px 2px 5px #333;-khtml-box-sizing:content-box;box-sizing:content-box;}
       footer{margin:0 auto;display:block;color:#999;text-align:center;font-size:0.6em;}
       footer span{display:block;line-height:1.5em;text-shadow:#444 1px 1px 0px ;}
-      footer a{color:#999}
+      footer a, footer a:visited{color:#999}
       footer a:hover{text-shadow:none;color:#555;}
   	</style>
     <link href="http://opensource.org/licenses/mit-license" rel="license"/>
@@ -42,7 +41,7 @@
   
   <body>
     <a href="http://github.com/mattt/Sonic-Hash/">
-      <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3  .amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me  on GitHub" />
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
     </a>
     
     <div class="container">
