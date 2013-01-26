@@ -13,7 +13,7 @@ Sonic-Hash attempts to solve this problem using subtle audible cues. After you f
 
 Melodies speak louder than words. Try it out at: [http://mattt.github.com/Sonic-Hash/](http://mattt.github.com/Sonic-Hash/ "Try out Sonic-Hash!")
 
-*Note:* Requires browser with support for HTML5 <audio>, such as [Safari 4](http://www.apple.com/safari/download/), [Firefox 3.5](http://www.mozilla.com/firefox/), or [Chrome](http://www.google.com/chrome/)
+*Note:* Requires browser with support for HTML5 `<audio>`, such as [Safari 4](http://www.apple.com/safari/download/), [Firefox 3.5](http://www.mozilla.com/firefox/), or [Chrome](http://www.google.com/chrome/)
 
 ## Usage
 
