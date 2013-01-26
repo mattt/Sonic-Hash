@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta name="author" content="Mattt Thompson">
-    <meta name="description" content="Sonic-Hash is a melodic Sonification of   password field input">
+    <meta name="description" content="Sonic-Hash is a melodic sonification of password field input">
     <title>Sonic-Hash</title>
+    <link href="http://opensource.org/licenses/mit-license" rel="license" title="MIT License"/>
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="jquery.sonic-hash.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-        $("input:password").sonicHash({notes: 4});
-        $("#username").focus();
-      });
-    </script>
     <style type="text/css" media="screen">
       body{background:#4C4B45;font-size:120%;font-family:"Helvetica",Helvetica,sans-serif;}
       hgroup{text-align:center;}
@@ -66,7 +61,14 @@
       </div>
     </div>
     <footer>
-      <span class="copyright">© <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a> - Released Under an <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a></span>
+      <span class="copyright">© <a href="http://mattt.me" title="Mattt Thompson" rel="me">Mattt Thompson</a> - Released Under an <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a></span>
     </footer>
+
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        $("input:password").sonicHash({notes: 4});
+        $("#username").focus();
+      });
+    </script>
   </body>
 </html>
